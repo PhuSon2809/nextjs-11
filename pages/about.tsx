@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { MainLayout } from '~/components/layout';
+import { AdminLayout, MainLayout } from '~/components/layout';
+import { Box, Typography } from '@mui/material';
 // import Header from '~/components/common/Header';
 
 //dynamic giúp chỉ render bên phía client mà ko render bên phía server
-const Header = dynamic(() => import('~/components/common/Header'), {
-  ssr: false,
-});
+// const Header = dynamic(() => import('~/components/common/header'), {
+//   ssr: false,
+// });
 
 export interface AboutPageProps {}
 
@@ -24,9 +25,7 @@ export default function AboutPage(props: AboutPageProps) {
     if (!page) return;
 
     (async () => {
-      const response = await fetch(
-        `https://js-post-api.herokuapp.com/api/posts?_page=${page}`
-      );
+      const response = await fetch(`https://js-post-api.herokuapp.com/api/posts?_page=${page}`);
       const data = await response.json();
       setPostList(data.data);
     })();
@@ -47,10 +46,12 @@ export default function AboutPage(props: AboutPageProps) {
   }
 
   return (
-    <MainLayout>
-      <h1>About Page</h1>
+    <Box>
+      <Typography component="h1" variant="h3" color="primary.main">
+        About Page
+      </Typography>
 
-      <Header />
+      {/* <Header /> */}
 
       <ul>
         {postList.map((post: any) => (
@@ -61,11 +62,11 @@ export default function AboutPage(props: AboutPageProps) {
       </ul>
 
       <button onClick={handleNextClick}>next page</button>
-    </MainLayout>
+    </Box>
   );
 }
 
-AboutPage.Layout = MainLayout;
+AboutPage.Layout = AdminLayout;
 
 export const getStaticProps = async () => {
   console.log('get static props');

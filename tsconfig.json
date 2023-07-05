@@ -20,20 +20,14 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "~/components/*": [
-        "./components/*"
+      "~/*": [
+        "./*"
       ],
-      "~/styles/*": [
-        "./styles/*"
+      "~/api": [
+        "./api-client/index.ts"
       ],
-      "~/constants/*": [
-        "./constants/*"
-      ],
-      "~/hooks/*": [
-        "./hooks/*"
-      ],
-      "~/models/*": [
-        "./models/*"
+      "~/api/*": [
+        "./api-client/*"
       ],
     }
   },
