@@ -11,14 +11,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: #ff6464;
-}
-
-.active {
-  color: #ff6464;
-}
-
 * {
   box-sizing: border-box;
 }

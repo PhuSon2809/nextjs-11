@@ -1,4 +1,10 @@
-import { Box, Container, Stack, Typography, Link as MuiLink } from '@mui/material';
+import {
+  Box,
+  Container,
+  Stack,
+  Typography,
+  Link as MuiLink,
+} from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
 import { PostCard } from './post-card';
@@ -8,16 +14,18 @@ export function RecentPosts() {
   const postList: Post[] = [
     {
       id: '1',
+      slug: '',
       title: 'Making a design system from scratch',
-      publishedDate: '1688455196158',
+      publishedDate: '2023-07-05T10:00:00Z',
       tagList: ['Design', 'Pattern'],
       description:
         'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
     },
     {
       id: '2',
+      slug: '',
       title: 'Creating pixel perfect icons in Figma',
-      publishedDate: '1688455196158',
+      publishedDate: '2023-07-05T10:00:00Z',
       tagList: ['Figma', 'Icon Design'],
       description:
         'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
@@ -34,7 +42,9 @@ export function RecentPosts() {
         >
           <Typography variant="h6">Recent Posts</Typography>
           <Link href="/blog">
-            <Typography sx={{ display: { xs: 'none', md: 'inline' }, color: 'blue' }}>
+            <Typography
+              sx={{ display: { xs: 'none', md: 'inline' }, color: 'blue' }}
+            >
               View all
             </Typography>
           </Link>

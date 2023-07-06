@@ -1,5 +1,11 @@
 import React from 'react';
-import { Box, Container, Stack, Link as MuiLink } from '@mui/material';
+import {
+  Box,
+  Container,
+  Stack,
+  Link as MuiLink,
+  Typography,
+} from '@mui/material';
 // import { Box } from '@mui/system';
 import Link from 'next/link';
 import { ROUTE_LIST } from './routes';
@@ -15,13 +21,20 @@ export function HeaderDesktop() {
         <Stack direction="row" justifyContent="flex-end">
           {ROUTE_LIST.map((route) => {
             return (
-              <Link
-                key={route.path}
-                href={route.path}
-                className={clsx({ active: route.path === router.pathname })}
-                style={{ marginLeft: 16, fontWeight: 'bold' }}
-              >
-                {route.label}
+              <Link key={route.path} href={route.path} passHref>
+                <Typography
+                  ml={2}
+                  fontWeight="bold"
+                  sx={{
+                    '&:hover': {
+                      color: 'primary.main',
+                    },
+                    color:
+                      route.path === router.pathname ? 'primary.main' : 'black',
+                  }}
+                >
+                  {route.label}
+                </Typography>
               </Link>
             );
           })}

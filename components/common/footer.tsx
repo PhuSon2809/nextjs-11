@@ -21,7 +21,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Icon component={item.icon} sx={{ fontSize: 48 }} />
+            <Icon component={item.icon} sx={{ fontSize: 40 }} />
           </Box>
         ))}
       </Stack>

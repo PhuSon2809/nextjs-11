@@ -6,11 +6,14 @@ author_title: Senior Software Engineer at fram^
 author_url: https://github.com/paulnguyen-mn
 author_image_url: https://avatars3.githubusercontent.com/u/31444102?s=400&u=c545a527aa31843e1361462e410c0f51863e8e26&v=4
 tags: [git, git trong dự án thực tế]
+date: '2023-07-05T10:00:00Z'
 ---
 
 Khi nhắc tới git có khá là nhiều lệnh khác nhau, tuy nhiên trong thực tế sử dụng trong dự án thì có những lệnh nào được sử dụng nhiều nhất? 🤔 Hãy cùng mình khám phá qua bài blog này nhé! 😉
 
 <!-- truncate-->
+
+## Agenda
 
 ## 0. Nhận task, ví dụ ở đây task có id là 123
 
@@ -19,19 +22,20 @@ Khi nhắc tới git có khá là nhiều lệnh khác nhau, tuy nhiên trong th
 
 ## 1. Lấy code mới nhất trên branch develop
 
-```sh
+```sh[class="line-numbers"]
 git checkout develop # switch sang nhánh develop
 
 git pull # lấy code mới nhất về
 ```
 
-## 2. Làm task trực tiếp trên nhánh develop 
+## 2. Làm task trực tiếp trên nhánh develop
+
 CODING CHANGES 😎
 <br />Sau khi code xong, nhờ review lại những thay đổi của mình, review cẩn thận, từ từ.
 <br />Review về coding convention.
 <br />Review về console log đã xoá chưa?
 <br />Review về imports (có dư thừa gì ko?)
-<br />Review về eslints 
+<br />Review về eslints
 <br />Review xem chỗ nào logic phức tạp nên add thêm comment vào.
 <br />Review xem chỗ nào code nhiều if/else quá thì refactor lại.
 <br />...
@@ -44,7 +48,7 @@ CODING CHANGES 😎
 > <br />Nhưng có thể trong lúc mình làm, ai đó đã update thêm lên nhánh develop rồi.
 > <br />Nên mình phải lấy code mới nhất trên nhánh develop rồi mới apply cái changes của mình.
 
-```sh
+```sh[class="line-numbers"]
 git add . # chấp nhận tất cả changes
 
 git stash # save tất cả code changes vào stash (kiểu nơi giữ code tạm)
@@ -54,13 +58,13 @@ git pull  # lấy code mới nhất về
 
 ## 4. Tạo nhánh cho code changes của mình
 
-```sh
+```sh[class="line-numbers"]
 git checkout -b feature/123-add-address-ui
 ```
 
 ## 5. Lấy code từ trong stash ra (hùi nảy lưu bằng git stash)
 
-```sh
+```sh[class="line-numbers"]
 git stash pop
 ```
 
@@ -68,7 +72,7 @@ git stash pop
 
 ## 6. Tạo commit, viết commit message
 
-```sh
+```sh[class="line-numbers"]
 git status # xem các files thay đổi
 git add . # chấp nhận tất cả thay đổi
 
@@ -80,17 +84,17 @@ git commit -m "[123] Add address ui
 
 > 📝Lưu ý chỗ chữ màu vàng
 > <br/> - Dòng đầu tiên là title
-> <br/> - Dòng thứ 2 là empty ( BẮT BUỘC ) 
+> <br/> - Dòng thứ 2 là empty ( BẮT BUỘC )
 > <br/> - Dòng thứ 3 trở đi là dòng mô tả thêm về Pull Request của mình.
 > <br/> Convention này nó giúp bạn tự động điền title, description vào ô tương ứng trên Github, Gitlab, Bitbucket, ...
 
 ## 7. Push code lên remote repository (Github, Gitlab, Bitbucket, ...)
 
-```sh
-git push -u origin feature/123-address-ui 
+```sh[class="line-numbers"]
+git push -u origin feature/123-address-ui
 ```
 
-## Cuối cùng, lên remote repo tạo PR/MR vào nhánh develop. Xong nhờ lead review thôi hehe 
+## Cuối cùng, lên remote repo tạo PR/MR vào nhánh develop. Xong nhờ lead review thôi hehe
 
 **📝LƯU Ý**
 
