@@ -48,7 +48,7 @@ export default function handler(
           }
 
           const { accessToken, expireAt } = JSON.parse(body);
-          console.log({ accessToken, expireAt });
+          // console.log({ accessToken, expireAt });
 
           //convert token to cookies
           const cookies = new Cookies(req, res, {
@@ -60,9 +60,12 @@ export default function handler(
             expires: new Date(expireAt),
           });
 
+          // (res as NextApiResponse)
+          //   .status(200)
+          //   .json({ message: 'Login successfully' });
           (res as NextApiResponse)
-            .status(200)
-            .json({ message: 'Login successfully' });
+            .status(400)
+            .json({ message: 'Wrong username or password' });
         } catch (error) {
           (res as NextApiResponse)
             .status(500)

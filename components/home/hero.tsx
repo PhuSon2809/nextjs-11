@@ -14,14 +14,19 @@ export function HeroSection() {
           textAlign={{ xs: 'center', md: 'left' }}
         >
           <Box>
-            <Typography component="h1" variant="h3" fontWeight="bold" mb={{ xs: 3.5, md: 5 }}>
+            <Typography
+              component="h1"
+              variant="h3"
+              fontWeight="bold"
+              mb={{ xs: 3.5, md: 5 }}
+            >
               Hi, I am John, <br />
               Creative Technologist
             </Typography>
             <Typography mb={{ xs: 3.5, md: 5 }}>
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
-              officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-              amet.
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim velit mollit.
+              Exercitation veniam consequat sunt nostrud amet.
             </Typography>
             <Button size="large" variant="contained">
               Download Resume
@@ -37,7 +42,12 @@ export function HeroSection() {
               borderRadius: '50%',
             }}
           >
-            <Image src={avatar} alt="avatar" style={{ width: '100%', height: '100%' }} />
+            <Image
+              src={avatar}
+              alt="avatar"
+              priority
+              style={{ width: '100%', height: '100%' }}
+            />
           </Box>
         </Stack>
       </Container>

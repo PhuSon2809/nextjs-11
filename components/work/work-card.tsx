@@ -26,6 +26,7 @@ export default function WorkCard({ work }: WorkCardProps) {
           height={180}
           alt="Work thumbnail"
           layout="responsive"
+          priority
         />
       </Box>
       <Box>

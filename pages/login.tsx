@@ -1,9 +1,10 @@
-import React from 'react';
 import { Paper, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 import { LoginForm } from '~/components/auth';
 import { useAuth } from '~/hooks';
 import { LoginPayload } from '~/models';
+import { getErrorMessage } from '~/utils';
 
 export default function Login() {
   const router = useRouter();
@@ -13,8 +14,10 @@ export default function Login() {
     try {
       await login(payload);
       router.push('/');
-    } catch (error) {
-      console.log('Fail to login', error);
+    } catch (error: unknown) {
+      const message = getErrorMessage(error);
+      console.log('Fail to login', message);
+      toast.error(message);
     }
   }
 

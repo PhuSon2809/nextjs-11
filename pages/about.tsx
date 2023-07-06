@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { AdminLayout, MainLayout } from '~/components/layout';
 import { Box, Typography } from '@mui/material';
+import Header from '~/components/common/header';
 // import Header from '~/components/common/Header';
 
 //dynamic giúp chỉ render bên phía client mà ko render bên phía server
@@ -25,7 +26,9 @@ export default function AboutPage(props: AboutPageProps) {
     if (!page) return;
 
     (async () => {
-      const response = await fetch(`https://js-post-api.herokuapp.com/api/posts?_page=${page}`);
+      const response = await fetch(
+        `https://js-post-api.herokuapp.com/api/posts?_page=${page}`
+      );
       const data = await response.json();
       setPostList(data.data);
     })();
@@ -51,7 +54,7 @@ export default function AboutPage(props: AboutPageProps) {
         About Page
       </Typography>
 
-      {/* <Header /> */}
+      <Header />
 
       <ul>
         {postList.map((post: any) => (

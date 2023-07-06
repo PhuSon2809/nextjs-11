@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Container,
@@ -19,6 +19,22 @@ export function HeaderDesktop() {
   const routeList = ROUTE_LIST.filter(
     (route) => !route.requireLogin || isLoggedIn
   );
+
+  // const [routeList, setRouteList] = useState(() =>
+  //   ROUTE_LIST.filter((route) => !route.requireLogin || isLoggedIn)
+  // );
+
+  // Server render menu not require login (A)
+  // Client - first render menu not require login (B)
+  // Client - useEffect render second time menu require login
+
+  // useEffect(() => {
+  //   // after the first render
+  //   // calc routeList and setRouteList
+  //   setRouteList(
+  //     ROUTE_LIST.filter((route) => !route.requireLogin || isLoggedIn)
+  //   );
+  // }, [isLoggedIn]);
 
   return (
     <Box display={{ xs: 'none', md: 'block' }} py={2}>
