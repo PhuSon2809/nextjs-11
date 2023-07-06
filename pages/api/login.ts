@@ -15,7 +15,10 @@ export const config = {
 
 const proxy = httpProxy.createProxyServer();
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) {
   if (req.method !== 'POST') {
     return res.status(404).json({ name: 'method not supported' });
   }
@@ -31,20 +34,39 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
       });
       proxyRes.on('end', function () {
         try {
+          console.log(body);
+          const isSuccess =
+            proxyRes.statusCode &&
+            proxyRes.statusCode >= 200 &&
+            proxyRes.statusCode < 300;
+
+          if (!isSuccess) {
+            (res as NextApiResponse)
+              .status(proxyRes.statusCode || 500)
+              .json(body);
+            return resolve(true);
+          }
+
           const { accessToken, expireAt } = JSON.parse(body);
           console.log({ accessToken, expireAt });
 
           //convert token to cookies
-          const cookies = new Cookies(req, res, { secure: process.env.NODE_ENV !== 'development' });
+          const cookies = new Cookies(req, res, {
+            secure: process.env.NODE_ENV !== 'development',
+          });
           cookies.set('access_token', accessToken, {
             httpOnly: true,
             sameSite: 'lax',
             expires: new Date(expireAt),
           });
 
-          (res as NextApiResponse).status(200).json({ message: 'Login successfully' });
+          (res as NextApiResponse)
+            .status(200)
+            .json({ message: 'Login successfully' });
         } catch (error) {
-          (res as NextApiResponse).status(500).json({ message: 'Something went wrong' });
+          (res as NextApiResponse)
+            .status(500)
+            .json({ message: 'Something went wrong' });
         }
       });
     };

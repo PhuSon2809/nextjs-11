@@ -1,52 +1,40 @@
 import React from 'react';
-import { authApi } from '../api-client';
-import { useAuth } from '~/hooks';
+import { Paper, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
+import { LoginForm } from '~/components/auth';
+import { useAuth } from '~/hooks';
+import { LoginPayload } from '~/models';
 
 export default function Login() {
   const router = useRouter();
-  const { profile, login, logout } = useAuth({ revalidateOnMount: false });
+  const { login } = useAuth({ revalidateOnMount: false });
 
-  async function handleLoginClick() {
+  async function handleLoginSubmit(payload: LoginPayload) {
     try {
-      await login();
-
-      console.log('Redirect to dashboard');
-
-      router.push('/about');
+      await login(payload);
+      router.push('/');
     } catch (error) {
       console.log('Fail to login', error);
     }
   }
 
-  async function handlegetProfileClick() {
-    try {
-      await authApi.getProfile();
-    } catch (error) {
-      console.log('Fail to get profile', error);
-    }
-  }
-
-  async function handleLogoutClick() {
-    try {
-      await logout();
-
-      console.log('Redirect to login page');
-    } catch (error) {
-      console.log('Fail to logout', error);
-    }
-  }
-
   return (
-    <div>
-      <h1>Login page</h1>
+    <Stack
+      minHeight="100vh"
+      direction="row"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Paper
+        elevation={4}
+        sx={{ p: 4, maxWidth: '480px', textAlign: 'center' }}
+      >
+        <Typography component="h1" variant="h4" fontWeight="bold" mb={2}>
+          Learn NextJS - Login
+        </Typography>
 
-      <p>Profile: {JSON.stringify(profile || {}, null, 4)}</p>
-
-      <button onClick={handleLoginClick}>Login</button>
-      <button onClick={handlegetProfileClick}>Get Profile</button>
-      <button onClick={handleLogoutClick}>Logout</button>
-      <button onClick={() => router.push('/about')}>go to about</button>
-    </div>
+        <LoginForm onSubmit={handleLoginSubmit} />
+      </Paper>
+    </Stack>
   );
 }

@@ -1,8 +1,9 @@
 import useSWR from 'swr';
 import { PublicConfiguration } from 'swr/_internal';
 import { authApi } from '../api-client';
+import { LoginPayload, UserProfile } from '~/models';
 
-export function useAuth(option?: Partial<PublicConfiguration>) {
+export function useAuth(options?: Partial<PublicConfiguration>) {
   // profile
 
   const {
@@ -12,23 +13,20 @@ export function useAuth(option?: Partial<PublicConfiguration>) {
   } = useSWR('/profile', {
     dedupingInterval: 60 * 60 * 1000, // 1hr
     revalidateOnFocus: false,
-    ...option,
+    ...options,
   });
 
   const firstLoading = profile === undefined && error === undefined;
 
-  async function login() {
-    await authApi.login({
-      username: 'phuson',
-      password: 'son123',
-    });
+  async function login(payload: LoginPayload) {
+    await authApi.login(payload);
 
     await mutate();
   }
 
   async function logout() {
     await authApi.logout();
-    mutate({}, false);
+    mutate(null, false);
   }
 
   return {
