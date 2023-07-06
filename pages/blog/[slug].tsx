@@ -11,6 +11,7 @@ import remarkPrism from 'remark-prism';
 import remarkRehype from 'remark-rehype';
 import remarkToc from 'remark-toc';
 import { unified } from 'unified';
+import Seo from '~/components/common/seo';
 import { MainLayout } from '~/components/layout';
 import { Post } from '~/models';
 import { getPostList } from '~/utils/blogs';
@@ -24,6 +25,17 @@ export default function BlogDetailPage({ post }: BlogPageProps) {
 
   return (
     <Box>
+      <Seo
+        data={{
+          title: post.title,
+          description: post.description,
+          url: `${process.env.HOST_URL}/blog/${post.slug}`,
+          thumbnailUrl:
+            post.thumbnailUrl ||
+            'https://tse1.mm.bing.net/th?id=OIP.rcKVwmwg1wZlroN8v1nBeAHaHa&pid=Api&P=0&h=180',
+        }}
+      />
+
       <Container>
         <h1>Post Detail Page</h1>
 

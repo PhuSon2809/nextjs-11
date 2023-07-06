@@ -15,8 +15,9 @@ const Home: NextPageWithLayout = () => {
           title: 'NextJS Tutorials | Phu Son Frontend Developer',
           description:
             'Step-by-step tutorials to build a full CRUD website using NextJS for beginners',
-          url: '',
-          thumbnailUrl: '',
+          url: 'https://ps-learn-nextjs.vercel.app/',
+          thumbnailUrl:
+            'https://tse1.mm.bing.net/th?id=OIP.rcKVwmwg1wZlroN8v1nBeAHaHa&pid=Api&P=0&h=180',
         }}
       />
 

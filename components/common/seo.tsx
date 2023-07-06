@@ -17,7 +17,7 @@ export default function Seo({ data }: SeoProps) {
 
   return (
     <Head>
-      <title>NextJS Tutorials | Phu Son Frontend Developer</title>
+      <title>{title}</title>
       <meta name="title" content={title} />
       <meta name="description" content={description} />
 
