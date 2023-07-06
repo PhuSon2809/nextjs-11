@@ -60,12 +60,9 @@ export default function handler(
             expires: new Date(expireAt),
           });
 
-          // (res as NextApiResponse)
-          //   .status(200)
-          //   .json({ message: 'Login successfully' });
           (res as NextApiResponse)
-            .status(400)
-            .json({ message: 'Wrong username or password' });
+            .status(200)
+            .json({ message: 'Login successfully' });
         } catch (error) {
           (res as NextApiResponse)
             .status(500)
