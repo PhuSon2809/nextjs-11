@@ -1,4 +1,4 @@
-import { Box, Container, Divider } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import Script from 'next/script';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings/lib';
@@ -11,6 +11,7 @@ import remarkPrism from 'remark-prism';
 import remarkRehype from 'remark-rehype';
 import remarkToc from 'remark-toc';
 import { unified } from 'unified';
+import { MainLayout } from '~/components/layout';
 import { Post } from '~/models';
 import { getPostList } from '~/utils/blogs';
 
@@ -33,6 +34,8 @@ export default function BlogDetailPage({ post }: BlogPageProps) {
     </Box>
   );
 }
+
+BlogDetailPage.Layout = MainLayout;
 
 //Fecthing data been phía server side
 export const getStaticPaths: GetStaticPaths = async () => {
