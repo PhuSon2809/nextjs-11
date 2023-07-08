@@ -1,15 +1,6 @@
-import {
-  Box,
-  Container,
-  Stack,
-  Typography,
-  Link as MuiLink,
-} from '@mui/material';
-import Link from 'next/link';
-import React from 'react';
-import { PostCard } from './post-card';
-import { Post, Work } from '~/models';
-import WorkList from '../work/work-list';
+import { Box, Container, Typography } from '@mui/material';
+import { Work } from '~/models';
+import { WorkList } from '../work';
 
 export function FeatureWorks() {
   const workList: Work[] = [

@@ -1,12 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import {
-  Box,
-  Button,
-  CircularProgress,
-  IconButton,
-  InputAdornment,
-} from '@mui/material';
+import { Box, Button, CircularProgress, IconButton, InputAdornment } from '@mui/material';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -14,7 +8,7 @@ import { LoginPayload } from '~/models';
 import { InputField } from '../form';
 
 export interface LoginFormProps {
-  onSubmit: (payload: LoginPayload) => void;
+  onSubmit?: (payload: LoginPayload) => void;
 }
 
 export function LoginForm({ onSubmit }: LoginFormProps) {
@@ -73,11 +67,7 @@ export function LoginForm({ onSubmit }: LoginFormProps) {
 
       <Button
         disabled={isSubmitting}
-        startIcon={
-          isSubmitting && (
-            <CircularProgress color="inherit" size="1em" sx={{ mr: 0.5 }} />
-          )
-        }
+        startIcon={isSubmitting && <CircularProgress color="inherit" size="1em" sx={{ mr: 0.5 }} />}
         variant="contained"
         type="submit"
         fullWidth

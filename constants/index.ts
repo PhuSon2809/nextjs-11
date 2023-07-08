@@ -1,1 +1,2 @@
-export * from './storage-key';
+export * from './storage-keys';
+export * from './query-keys';

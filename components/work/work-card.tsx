@@ -1,21 +1,12 @@
-import * as React from 'react';
-import { Work } from '~/models';
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Divider,
-  Stack,
-  Chip,
-} from '@mui/material';
+import { Box, Chip, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
+import { Work } from '~/models';
 
 export interface WorkCardProps {
   work: Work;
 }
 
-export default function WorkCard({ work }: WorkCardProps) {
+export function WorkCard({ work }: WorkCardProps) {
   console.log(work.thumbnailUrl);
   return (
     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
