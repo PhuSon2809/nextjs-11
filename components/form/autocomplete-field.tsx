@@ -73,8 +73,8 @@ export function AutocompleteField<T, K extends FieldValues>({
           helperText={error?.message}
         />
       )}
-      onChange={(event, value) => {
-        onChange(value);
+      onChange={(event: any, value) => {
+        // onChange(value);
         externalOnChange?.(value as T[]);
       }}
       onBlur={onBlur}
